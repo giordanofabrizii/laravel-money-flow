@@ -10,10 +10,12 @@ class Transaction extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'amount',
         'date',
         'type',
         'category',
+        'notes',
     ];
 
     public function user() // many to one
