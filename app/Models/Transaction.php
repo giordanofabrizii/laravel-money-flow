@@ -15,4 +15,9 @@ class Transaction extends Model
         'type',
         'category',
     ];
+
+    public function user() // many to one
+    {
+        return $this->belongsTo(User::class);
+    }
 }
