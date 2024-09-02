@@ -20,7 +20,7 @@ class TransactionsSeeder extends Seeder
             $newTransaction->amount = $faker->randomFloat(2, 0, 1000);
             $newTransaction->date = $faker->dateTimeThisYear();
             $newTransaction->type = $faker->boolean();
-            $newTransaction->category = $faker->randomElement(['Car', 'Rent', 'Food', 'Hobby', 'Gift']);
+            $newTransaction->category = $faker->numberBetween(1,7);
             $newTransaction->notes = $faker->sentence();
             $newTransaction->save();
         };

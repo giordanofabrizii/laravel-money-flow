@@ -57,7 +57,8 @@ class CategoryController extends Controller
         $data = $request->validated();
 
         $category->update($data);
-        return redirect()->route('categories.index', $category);
+        return redirect()->route('categories.index'
+    );
 
     }
 

@@ -13,4 +13,9 @@ class Category extends Model
         'name',
         'icon',
     ];
+
+    public function transactions() // one to many relation
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }
