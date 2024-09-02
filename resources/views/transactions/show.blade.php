@@ -17,7 +17,7 @@
                 @endif
             </p>
             <p>Date: {{ $transaction['date'] }}</p>
-            <p>Category: {{ $transaction['category'] }}</p>
+            <p>Category: <i class="{{ $transaction->category->icon }} mx-2"></i>{{ $transaction->category->name }}</p>
             <p>Notes: {{ $transaction['notes'] }}</p>
             <div class="row d-flex flex-row">
                 @if (Auth::user()->id == $transaction['user_id'])

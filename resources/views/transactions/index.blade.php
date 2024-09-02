@@ -19,7 +19,7 @@
                         <th scope="col">User Id</th>
                         <th scope="col">Amount</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Type</th>
+                        <th scope="col">Category</th>
                         <th scope="col">Buttons</th>
                     </tr>
                 </thead>
@@ -37,7 +37,7 @@
                                     @endif
                                 </td>
                                 <td>{{ $transaction['date'] }}</td>
-                                <td>{{ $transaction['category'] }}</td>
+                                <td><i class="{{ $transaction->category->icon }} mx-2"></i>{{ $transaction->category->name }}</td>
                                 <td><a class="btn btn-primary" href="{{ Route('transactions.show',$transaction) }}">Show</a></td>
                             </tr>
                         @endif

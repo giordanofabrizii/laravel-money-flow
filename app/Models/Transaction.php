@@ -14,7 +14,7 @@ class Transaction extends Model
         'amount',
         'date',
         'type',
-        'category',
+        'category_id',
         'notes',
     ];
 
@@ -25,6 +25,6 @@ class Transaction extends Model
 
     public function category() // many to one
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Category::class);
     }
 }

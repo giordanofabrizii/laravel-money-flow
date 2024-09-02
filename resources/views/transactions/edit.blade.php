@@ -42,7 +42,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="category">Category</label>
-                                <input type="text" class="form-control" name="category" id="category" placeholder="Enter category" value="{{ old('category', $transaction->category) }}">
+                                <select class="form-control" name="category" id="category" placeholder="Enter category">
+                                    @foreach ($categories as $category)
+                                    <option
+                                    {{ old('category', $transaction->category) == 0 ? "selected" : "" }} value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                                    @endforeach
+                                </select>
                                 @error('category')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror

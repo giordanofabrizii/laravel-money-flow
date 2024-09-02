@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreTransactionRequest;
@@ -25,7 +26,8 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        return view('transactions.create');
+        $categories = Category::all();
+        return view('transactions.create', compact('categories'));
     }
 
     /**
@@ -54,7 +56,8 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
-        return view('transactions.edit',compact('transaction'));
+        $categories = Category::all();
+        return view('transactions.edit',compact('transaction','categories'));
     }
 
     /**
