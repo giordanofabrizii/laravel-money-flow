@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController as HomeController;
 use App\Http\Controllers\TransactionController as TransactionController;
 use App\Http\Controllers\CategoryController as CategoryController;
 
@@ -21,10 +22,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource("home",HomeController::class);
 
 Route::middleware('auth')->group(function(){
     Route::resource("transactions",TransactionController::class);
     Route::resource("categories",CategoryController::class);
 });
-
+Route::get('/transactions/{type}/{value}/{year}', [TransactionController::class, 'getTransactions']);
