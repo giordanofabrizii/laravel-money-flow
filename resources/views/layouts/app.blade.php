@@ -73,11 +73,7 @@
         </nav>
 
         <main class="py-4">
-            @if (Auth::user() === null)
-                <h1>You have to log in or register</h1>
-            @else
                 @yield('content')
-            @endif
         </main>
     </div>
 </body>
