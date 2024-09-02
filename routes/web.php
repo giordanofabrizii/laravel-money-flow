@@ -16,7 +16,7 @@ use App\Http\Controllers\TransactionController as TransactionController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 
