@@ -14,21 +14,21 @@
 
                         <div class="form-group">
                             <label for="amount">Transaction amount</label>
-                            <input type="number" class="form-control" name="amount" id="amount" placeholder="Enter amount" ">
+                            <input type="number" class="form-control" name="amount" id="amount" placeholder="Enter amount">
                             @error('amount')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="date">Date</label>
-                            <input type="date" class="form-control" name="date" id="date" ">
+                            <input type="date" class="form-control" name="date" id="date">
                             @error('date')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="type">Transaction Type</label>
-                            <select class="form-control" name="type" id="type" placeholder="Enter type" ">
+                            <select class="form-control" name="type" id="type" placeholder="Enter type">
                                 <option selected value="0">Outcome</option>
                                 <option value="1">Income</option>
                             </select>
@@ -38,14 +38,14 @@
                         </div>
                         <div class="form-group">
                             <label for="category">Category</label>
-                            <input type="text" class="form-control" name="category" id="category" placeholder="Enter category" ">
+                            <input type="text" class="form-control" name="category" id="category" placeholder="Enter category">
                             @error('category')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="notes">Add Notes</label>
-                            <input type="text" class="form-control" name="notes" id="notes" placeholder="Write notes" ">
+                            <input type="text" class="form-control" name="notes" id="notes" placeholder="Write notes">
                             @error('notes')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

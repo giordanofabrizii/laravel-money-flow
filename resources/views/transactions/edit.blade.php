@@ -60,7 +60,9 @@
                 </div>
             </div>
         @else
-            <h1>You can only edit your transaction</h1>
+            <div class="container">
+                <h1 class="text-center">You can only edit your transactions</h1>
+            </div>
         @endif
     @endif
 @endsection
