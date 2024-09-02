@@ -18,27 +18,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Carica i dati iniziali
-    const initialType = periodEl.children[0].getAttribute('data-type'); // Tipo dell'elemento iniziale
-    const initialValue = periodEl.children[0].getAttribute('data-value'); // Valore dell'elemento iniziale
-    const initialYear = periodEl.children[0].getAttribute('data-year'); // Anno dell'elemento iniziale
+    const initialType = periodEl.children[0].getAttribute('data-type');
+    const initialValue = periodEl.children[0].getAttribute('data-value');
+    const initialYear = periodEl.children[0].getAttribute('data-year');
 
     loadTransactions(initialType, initialValue, initialYear);
 
     // Aggiungi un listener per il click sugli elementi
     periodEl.addEventListener('click', function(event) {
-        // Verifica se il target è un elemento <li>
-        if (event.target.tagName === 'LI') {
-            // Rimuovi la classe "selected" da tutti i figli e aggiungila all'elemento cliccato
-            Array.from(periodEl.children).forEach(li => li.classList.remove('selected'));
-            event.target.classList.add('selected');
+        // Rimuovi la classe "selected" da tutti i figli e aggiungila all'elemento cliccato
+        Array.from(periodEl.children).forEach(li => li.classList.remove('selected'));
+        event.target.classList.add('selected');
 
-            // Ottieni i dati dell'elemento cliccato
-            const type = event.target.getAttribute('data-type');
-            const value = event.target.getAttribute('data-value');
-            const year = event.target.getAttribute('data-year');
+        // Ottieni i dati dell'elemento cliccato
+        const type = event.target.getAttribute('data-type');
+        const value = event.target.getAttribute('data-value');
+        const year = event.target.getAttribute('data-year');
 
-            // Carica i dati basati sull'elemento cliccato
-            loadTransactions(type, value, year);
-        }
+        // Carica i dati basati sull'elemento cliccato
+        loadTransactions(type, value, year);
     });
 });
