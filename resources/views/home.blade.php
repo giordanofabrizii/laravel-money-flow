@@ -60,16 +60,16 @@
             </div>
             <div class="my-container">
                 <div class="row">
-                    <article class="col-2 p-2">
+                    <article class="col-2 p-3">
                         <p class="m-0">Current Balance: {{ Auth::user()->balance }} &euro;</p>
                     </article>
-                    <article class="col-2 p-2">
+                    <article class="col-2 p-3">
                         <p class="m-0">Incoming: <span class="p-0" id="income">0</span>&euro; </p>
                     </article>
-                    <article class="col-2 p-2">
+                    <article class="col-2 p-3">
                         <p class="m-0">Outcoming: <span id="outcome">0</span>&euro;</p>
                     </article>
-                    <article class="col-2 p-2">
+                    <article class="col-2 p-3">
                         <p class="m-0">Balance of the Period: <span id="balance">0</span>&euro;</p>
                     </article>
                 </div>
