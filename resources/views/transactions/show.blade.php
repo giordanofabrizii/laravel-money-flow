@@ -14,10 +14,15 @@
         <p>Date: {{ $transaction['date'] }}</p>
         <p>Category: {{ $transaction['category'] }}</p>
         <p>Notes: {{ $transaction['notes'] }}</p>
-        <div>
+        <div class="row d-flex flex-row">
             @if (Auth::user()->id == $transaction['user_id'])
-                <a class="btn btn-warning" href="{{ Route('transactions.edit',$transaction) }}">Edit</a>
-                <a class="btn btn-danger" href="{{ Route('transactions.destroy',$transaction) }}">Delete</a>
+                <a class="col-3 btn btn-warning" href="{{ Route('transactions.edit',$transaction) }}">Edit</a>
+                <form class="col-3" action="{{ route('transactions.destroy', $transaction) }}" method="POST" >
+                    @method('DELETE')
+                    @csrf
+
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             @endif
         </div>
     </div>

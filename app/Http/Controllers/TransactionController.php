@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreTransactionRequest;
+use App\Http\Requests\UpdateTransactionRequest;
 
 class TransactionController extends Controller
 {
@@ -23,15 +25,20 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view('transactions.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTransactionRequest $request)
     {
-        //
+        $data = $request->validated();
+        $data['user_id'] = Auth::user()->id;
+
+        $newTransaction = new Transaction($data);
+        $newTransaction->save();
+        return redirect()->Route('transactions.show',$newTransaction);
     }
 
     /**
@@ -45,24 +52,29 @@ class TransactionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Transaction $transaction)
     {
-        //
+        return view('transactions.edit',compact('transaction'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateTransactionRequest $request, Transaction $transaction)
     {
-        //
+        $data = $request->validated();
+
+        $transaction->update($data);
+        return redirect()->route('transactions.show', $transaction);
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Transaction $transaction)
     {
-        //
+        $transaction->delete();
+        return redirect()->route('transactions.index');
     }
 }
