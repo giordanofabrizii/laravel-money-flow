@@ -58,7 +58,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="my-container">
+            <div class="my-container monitor">
                 <div class="row">
                     <article class="col-2 p-3">
                         <p class="m-0">Current Balance: {{ Auth::user()->balance }} &euro;</p>
@@ -75,35 +75,21 @@
                 </div>
             </div>
             <div class="my-container p-5">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">User Id</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Buttons</th>
-                        </tr>
-                    </thead>
+                <table class="table table-sm table-striped">
                     <tbody>
                         @foreach ($transactions as $transaction)
-                            @if (Auth::user()->id == $transaction['user_id'])
-                                <tr>
-                                    <td>{{ $transaction['id'] }}</td>
-                                    <td>{{ $transaction['user_id'] }}</td>
-                                    <td>
-                                        @if ($transaction['type'] == 0)
-                                            -{{ $transaction['amount'] }}
-                                        @else
-                                            +{{ $transaction['amount'] }}
-                                        @endif
-                                    </td>
-                                    <td>{{ $transaction['date'] }}</td>
-                                    <td><i class="{{ $transaction->category->icon }} mx-2"></i>{{ $transaction->category->name }}</td>
-                                    <td><a class="btn btn-primary" href="{{ Route('transactions.show',$transaction) }}">Show</a></td>
-                                </tr>
-                            @endif
+                            <tr>
+                                <td><i class="{{ $transaction->category->icon }} mx-2"></i>{{ $transaction->category->name }}</td>
+                                <td
+                                    @if ($transaction['type'] == 0)
+                                        class="text-danger">-{{ $transaction['amount'] }}
+                                    @else
+                                        class="text-success">+{{ $transaction['amount'] }}
+                                    @endif
+                                </td>
+                                <td>{{ $transaction['date'] }}</td>
+                                <td><a href="{{ Route('transactions.show',$transaction) }}">Show</a></td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
