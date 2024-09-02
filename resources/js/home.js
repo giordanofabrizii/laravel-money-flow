@@ -20,7 +20,7 @@ periodEl.addEventListener('click', function(event) {
             // update the span
             incomeEl.textContent = data.incoming;
             outcomeEl.textContent = data.outcoming;
-            balanceEl.textContent = data.balance;
+            balanceEl.textContent = parseFloat(data.balance).toFixed(2);;
         })
         .catch(error => console.error('Errore:', error));
 })
