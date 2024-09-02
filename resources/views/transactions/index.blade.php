@@ -14,19 +14,21 @@
             </thead>
             <tbody>
                 @foreach ($transactions as $transaction)
-                    <tr>
-                        <td>{{ $transaction['id'] }}</td>
-                        <td>{{ $transaction['user_id'] }}</td>
-                        <td>
-                            @if ($transaction['type'] == 0)
-                                -{{ $transaction['amount'] }}
-                            @else
-                                {{ $transaction['amount'] }}
-                            @endif
-                        </td>
-                        <td>{{ $transaction['date'] }}</td>
-                        <td>{{ $transaction['category'] }}</td>
-                    </tr>
+                    @if (Auth::user()->id == $transaction['user_id'])
+                        <tr>
+                            <td>{{ $transaction['id'] }}</td>
+                            <td>{{ $transaction['user_id'] }}</td>
+                            <td>
+                                @if ($transaction['type'] == 0)
+                                    -{{ $transaction['amount'] }}
+                                @else
+                                    +{{ $transaction['amount'] }}
+                                @endif
+                            </td>
+                            <td>{{ $transaction['date'] }}</td>
+                            <td>{{ $transaction['category'] }}</td>
+                        </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>
